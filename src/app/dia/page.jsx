@@ -1,4 +1,4 @@
-import Dia from "@/Components/Dia";
+import Dia from "@/components/Dia";
 import React from "react";
 
 const fechaActual  = new Date();

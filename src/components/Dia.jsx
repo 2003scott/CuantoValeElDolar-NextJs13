@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/router";
 
 function Dia({titulo,valor,fecha}) {
   // const router = useRouter();

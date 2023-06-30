@@ -1,4 +1,4 @@
-import Theme from "@/Components/Theme";
+import Theme from "@/components/Theme";
 import React from "react";
 
 function page() {

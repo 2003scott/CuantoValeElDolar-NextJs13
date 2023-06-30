@@ -1,4 +1,5 @@
-import Meses from '@/Components/Meses';
+
+import Meses from '@/components/Meses';
 import React from 'react';
 
 const fechaActual  = new Date();
