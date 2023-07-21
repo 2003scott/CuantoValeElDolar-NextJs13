@@ -1,5 +1,6 @@
 import Meses from "@/components/Meses";
 import React from "react";
+import axios from "axios";
 
 const fechaActual = new Date();
 
@@ -15,12 +16,12 @@ const anio = fechaActual.toLocaleDateString("es-PE", {
   ...formatofecha,
 });
 
-async function DolarMes() {
+async function dolarMes() {
   try {
-    const res = await fetch(
+    const res = await axios.get(
       `https://api.apis.net.pe/v1/tipo-cambio-sunat?year=${anio}&month=${mes}`
     );
-    const data = await res.json();
+    const data = res.data;
     return data;
   } catch (e) {
     console.log(e.message);
@@ -29,7 +30,7 @@ async function DolarMes() {
 }
 
 async function MesPage() {
-  const meses = await DolarMes();
+  const meses = await dolarMes();
 
   return (
     <div className="container mx-auto block pt-3 pb-5">

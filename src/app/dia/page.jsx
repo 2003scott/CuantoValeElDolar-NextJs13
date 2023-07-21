@@ -1,5 +1,6 @@
 import Dia from "@/components/Dia";
 import React from "react";
+import axios from "axios";
 
 const fechaActual = new Date();
 
@@ -19,12 +20,12 @@ const anio = fechaActual.toLocaleDateString("es-PE", {
   ...formatofecha,
 });
 
-async function DolarDia() {
+async function dolarDia() {
   try {
-    const res = await fetch(
+    const res = await axios.get(
       `https://api.apis.net.pe/v1/tipo-cambio-sunat?fecha=${anio}-${mes}-${hoy}`
     );
-    const data = await res.json();
+    const data = res.data;
     return data;
   } catch (e) {
     console.log(e.message);
@@ -33,7 +34,7 @@ async function DolarDia() {
 }
 
 async function DiaPage() {
-  const dias = await DolarDia();
+  const dias = await dolarDia();
 
   return (
     <div className="container mx-auto text-center pt-28 ">
