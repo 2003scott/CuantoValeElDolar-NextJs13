@@ -28,7 +28,7 @@ async function DiaPage() {
       <div className="mockup-phone">
         <div className="camera"></div>
         <div className="display">
-          {dias ? (
+          {dias !== null ?  (
             <div className="artboard artboard-demo phone-1">
               <Dia
                 titulo="Valor de Compra Hoy"
