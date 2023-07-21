@@ -1,3 +1,4 @@
+"use client";
 import Dia from "@/components/Dia";
 import React from "react";
 
@@ -17,6 +18,7 @@ async function DolarDia() {
     console.log(res.ok, res.status);
     const textdata = await res.text()
     console.log(textdata)
+    console.log("hola bebesita")
     const data = JSON.parse(textdata);
     return data;
   // console.log(data)
