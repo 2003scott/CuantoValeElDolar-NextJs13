@@ -13,9 +13,11 @@ const anio = fechaActual.toLocaleDateString('es-PE', { year: 'numeric', ...forma
 async function DolarMes() {
         try{
         const  res = await fetch(`https://api.apis.net.pe/v1/tipo-cambio-sunat?year=${anio}&month=${mes}`)
-        console.log(res.ok,res.status) 
-        const data = await res.json()
-        return data
+        const textdata = await res.text()
+        console.log(textdata)
+        console.log("hola bebesita")
+        const data = JSON.parse(textdata);
+        return data;
         }
 
     // console.log(data)
