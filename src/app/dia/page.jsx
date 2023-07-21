@@ -1,4 +1,3 @@
-"use client";
 import Dia from "@/components/Dia";
 import React from "react";
 
@@ -25,15 +24,11 @@ async function DolarDia() {
     const res = await fetch(
       `https://api.apis.net.pe/v1/tipo-cambio-sunat?fecha=${anio}-${mes}-${hoy}`
     );
-    console.log(res.ok, res.status);
-    const textdata = await res.text();
-    console.log(textdata);
-    console.log("hola bebesita");
-    const data = JSON.parse(textdata);
+    const data = await res.json();
     return data;
   } catch (e) {
     console.log(e.message);
-    return;
+    return null;
   }
 }
 
@@ -42,10 +37,10 @@ async function DiaPage() {
 
   return (
     <div className="container mx-auto text-center pt-28 ">
-      <div className="mockup-phone">
-        <div className="camera"></div>
-        <div className="display">
-          {dias !== null ? (
+      {dias !== null ? (
+        <div className="mockup-phone">
+          <div className="camera"></div>
+          <div className="display">
             <div className="artboard artboard-demo phone-1">
               <Dia
                 titulo="Valor de Compra Hoy"
@@ -59,12 +54,11 @@ async function DiaPage() {
                 fecha={dias.fecha}
               ></Dia>
             </div>
-          ) : (
-            "No hay Datos"
-          )}
+          </div>
         </div>
-      </div>
-      {/* {JSON.stringify(dias)}  */}
+      ) : (
+        <span className="text-white bg-black p-5">No hay Datos</span>
+      )}
     </div>
   );
 }

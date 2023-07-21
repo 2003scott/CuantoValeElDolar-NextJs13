@@ -1,4 +1,3 @@
-"use client";
 import Meses from "@/components/Meses";
 import React from "react";
 
@@ -21,27 +20,20 @@ async function DolarMes() {
     const res = await fetch(
       `https://api.apis.net.pe/v1/tipo-cambio-sunat?year=${anio}&month=${mes}`
     );
-    const textdata = await res.text();
-    console.log(textdata);
-    console.log("hola bebesita");
-    const data = JSON.parse(textdata);
+    const data = await res.json();
     return data;
   } catch (e) {
-    // console.log(data)
-
     console.log(e.message);
-    return;
+    return null;
   }
 }
 
 async function MesPage() {
   const meses = await DolarMes();
-  // console.log(meses)
 
   return (
     <div className="container mx-auto block pt-3 pb-5">
       <Meses meses={meses} />
-      {/* {JSON.stringify(meses)}  */}
     </div>
   );
 }
