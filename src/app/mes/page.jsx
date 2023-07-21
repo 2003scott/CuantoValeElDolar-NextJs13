@@ -1,4 +1,4 @@
-
+"use client";
 import Meses from '@/components/Meses';
 import React from 'react';
 
@@ -11,12 +11,19 @@ const mes = fechaActual.toLocaleDateString('es-PE', { month: '2-digit', ...forma
 const anio = fechaActual.toLocaleDateString('es-PE', { year: 'numeric', ...formatofecha });
 
 async function DolarMes() {
+        try{
         const  res = await fetch(`https://api.apis.net.pe/v1/tipo-cambio-sunat?year=${anio}&month=${mes}`)
         console.log(res.ok,res.status) 
         const data = await res.json()
         return data
+        }
 
     // console.log(data)
+
+    catch(e){
+        console.log(e.message)
+        return 
+      }
 
 }
 

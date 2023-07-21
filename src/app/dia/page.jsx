@@ -12,6 +12,7 @@ const mes = fechaActual.toLocaleDateString('es-PE', { month: '2-digit', ...forma
 const anio = fechaActual.toLocaleDateString('es-PE', { year: 'numeric', ...formatofecha });
 
 async function DolarDia() {
+  try {
     const res = await fetch(
       `https://api.apis.net.pe/v1/tipo-cambio-sunat?fecha=${anio}-${mes}-${hoy}`
     );
@@ -21,7 +22,10 @@ async function DolarDia() {
     console.log("hola bebesita")
     const data = JSON.parse(textdata);
     return data;
-  // console.log(data)
+  }catch(e){
+    console.log(e.message)
+    return 
+  }
 }
 
 async function DiaPage() {
