@@ -15,7 +15,9 @@ async function DolarDia() {
       `https://api.apis.net.pe/v1/tipo-cambio-sunat?fecha=${anio}-${mes}-${hoy}`
     );
     console.log(res.ok, res.status);
-    const data = await res.json();
+    const textdata = await res.text()
+    console.log(textdata)
+    const data = JSON.parse(textdata);
     return data;
   // console.log(data)
 }
