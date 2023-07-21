@@ -2,14 +2,23 @@
 import Dia from "@/components/Dia";
 import React from "react";
 
-const fechaActual  = new Date();
+const fechaActual = new Date();
 
 // obtener fecha de peru actual formato
 
-const formatofecha = { timeZone: 'America/Lima' };
-const hoy = fechaActual.toLocaleDateString('es-PE', { day: '2-digit', ...formatofecha });
-const mes = fechaActual.toLocaleDateString('es-PE', { month: '2-digit', ...formatofecha });
-const anio = fechaActual.toLocaleDateString('es-PE', { year: 'numeric', ...formatofecha });
+const formatofecha = { timeZone: "America/Lima" };
+const hoy = fechaActual.toLocaleDateString("es-PE", {
+  day: "2-digit",
+  ...formatofecha,
+});
+const mes = fechaActual.toLocaleDateString("es-PE", {
+  month: "2-digit",
+  ...formatofecha,
+});
+const anio = fechaActual.toLocaleDateString("es-PE", {
+  year: "numeric",
+  ...formatofecha,
+});
 
 async function DolarDia() {
   try {
@@ -17,14 +26,14 @@ async function DolarDia() {
       `https://api.apis.net.pe/v1/tipo-cambio-sunat?fecha=${anio}-${mes}-${hoy}`
     );
     console.log(res.ok, res.status);
-    const textdata = await res.text()
-    console.log(textdata)
-    console.log("hola bebesita")
+    const textdata = await res.text();
+    console.log(textdata);
+    console.log("hola bebesita");
     const data = JSON.parse(textdata);
     return data;
-  }catch(e){
-    console.log(e.message)
-    return 
+  } catch (e) {
+    console.log(e.message);
+    return;
   }
 }
 
@@ -36,7 +45,7 @@ async function DiaPage() {
       <div className="mockup-phone">
         <div className="camera"></div>
         <div className="display">
-          {dias !== null ?  (
+          {dias !== null ? (
             <div className="artboard artboard-demo phone-1">
               <Dia
                 titulo="Valor de Compra Hoy"
