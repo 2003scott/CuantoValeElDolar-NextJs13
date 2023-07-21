@@ -38,7 +38,9 @@ function Meses({ meses }) {
                     <td>{mes.fecha}</td>
                   </tr>
                 ))
-              : ("No hay datos para cargar")}
+              : (
+                "No hay datos para cargar"
+                )}
           </tbody>
         </table>
       </div>
