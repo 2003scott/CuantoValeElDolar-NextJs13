@@ -29,8 +29,7 @@ function Meses({ meses }) {
             </tr>
           </thead>
           <tbody>
-            {meses !== null
-              ? meses.map((mes) => (
+            {meses !== null ? meses.map((mes) => (
                   <tr className="hover" key={mes.fecha}>
                     <td>{mes.compra}</td>
                     <td>{mes.venta}</td>
@@ -39,7 +38,7 @@ function Meses({ meses }) {
                     <td>{mes.fecha}</td>
                   </tr>
                 ))
-              : "No hay datos para cargar"}
+              : ("No hay datos para cargar")}
           </tbody>
         </table>
       </div>
