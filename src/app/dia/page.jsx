@@ -34,6 +34,7 @@ async function dolarDia() {
 }
 
 async function DiaPage() {
+  
   const dias = await dolarDia();
 
   return (
